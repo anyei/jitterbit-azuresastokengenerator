@@ -1,0 +1,31 @@
+<project basedir="." default="build-plugin" name="Azure SAS Token Generator">
+	
+	<target name="build-plugin">
+		<property name="build.dir" value="_build" />
+		<property name="plugin.dir" value="AzureSASTokenGenerator" />
+		<property name="plugin.jar" value="azuresastokengenerator-plugin.jar" />
+		<property name="lib.dir" value="../lib/" />
+		
+		<delete dir="${build.dir}" />
+		<delete dir="${plugin.dir}}" />
+		<mkdir dir="${build.dir}" />
+		
+		<javac destdir="${build.dir}">
+			<src path="src" />
+			<classpath>
+				<pathelement location="${lib.dir}/commons-lang-2.0.jar" />
+				<pathelement location="${lib.dir}/jitterbit-plugin-sdk.jar" />
+				<pathelement location="${lib.dir}/jitterbit-xml-utils.jar" />
+			</classpath>
+		</javac>
+		
+		<mkdir dir="${plugin.dir}" />
+		<jar basedir="${build.dir}" destfile="${plugin.dir}/${plugin.jar}" manifest="manifest.txt"/>
+		<copy todir="${plugin.dir}" file="plugin.xml">
+			<fileset dir="${lib.dir}" />
+		</copy>
+		
+		<delete dir="${build.dir}" />
+	</target>
+	
+</project>

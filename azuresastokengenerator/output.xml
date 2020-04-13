@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JitterbitPlugin SpecVersion="1.0.0.0">
+    <PipelinePluginOutput SpecVersion="1.0.0.0">
+        <DataElements>
+            <DataElement Name="azuresastokengenerator.sastoken" Type="String"></DataElement>
+        </DataElements>
+    </PipelinePluginOutput>
+</JitterbitPlugin>
