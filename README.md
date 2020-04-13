@@ -1,0 +1,1 @@
+# jitterbit-azuresastokengenerator
