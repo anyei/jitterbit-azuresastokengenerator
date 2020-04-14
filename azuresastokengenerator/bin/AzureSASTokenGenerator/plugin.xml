@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<JitterbitPlugin SpecVersion="1.0">
+  <PipelinePlugin SpecVersion="1.0">
+    <!-- Unique name of the plugin, it can be anything
+         but it is recommended to use a URL -->
+    <Name>https://github.com/anyei/jitterbit-azuresastokengenerator</Name>
+    <!-- Version of this pipeline plugin -->
+    <Version>1.0</Version>
+    <!-- The name to use when the plugin is displayed in the UI
+         Should be different from the unique name.-->
+    <DisplayName>Azure SAS Token Generator</DisplayName>
+
+    <Author>Angel Robles</Author>
+    <Description>You can generate an sas token for azure.</Description>
+
+    <!-- Where to check for updated versions of this plugin -->
+    <UpdateUrl>https://github.com/anyei/jitterbit-azuresastokengenerator</UpdateUrl>
+	
+    <!-- Where to find documentation about how this plugin works -->
+    <DocumentationUrl>https://github.com/anyei/jitterbit-azuresastokengenerator</DocumentationUrl>
+
+    <!-- Command line used to execute the plugin. Since this plugin is implemented 
+         using the Java SDK, it is executed by invoking Java. You need to use version
+         5 or higher of Java to use the Java SDK. -->
+    <Command>java</Command>
+    <!-- The arguments to pass to the executable. Since this plugin is packaged as an
+         executable JAR file, you need to pass -jar and the path to the JAR file.
+         $(plugin.directory) expands to the directory where the plugin is installed. -->
+    <Arguments>-jar "$(plugin.directory)azuresastokengenerator-plugin.jar"</Arguments>
+    
+    <!-- Optional list of data elements that describes which data elements are required and their default values.
+         If a data element is required but does not have a default value the data element has to be defined
+         before the pipeline plugin is executed or the plugin will not be executed and the operation aborted.
+         If All="true" is specified, all data elements will be sent to the plugin,
+         this should not be used by default since it may slow down the execution. -->
+    <DataElements All="false">
+      <DataElement Name="azuresastokengenerator.key" Type="String" Required="true">
+        <Documentation>
+        </Documentation>
+        <DefaultValue></DefaultValue>
+      </DataElement>
+      <DataElement Name="azuresastokengenerator.keyname" Type="String" Required="true">
+        <Documentation>
+        </Documentation>
+        <DefaultValue></DefaultValue>
+      </DataElement>
+      <DataElement Name="azuresastokengenerator.resourceuri" Type="String" Required="true">
+        <Documentation>
+        </Documentation>
+        <DefaultValue></DefaultValue>
+      </DataElement>
+      <DataElement Name="azuresastokengenerator.howlonginhours" Type="int" Required="true">
+        <Documentation>
+        </Documentation>
+        <DefaultValue></DefaultValue>
+      </DataElement>
+    </DataElements>
+
+    <!-- The value describes where the plugin can be applied, e.g. Target, Source, WebServiceMethod
+         Relative is where in relation to the pipeline position this plugin is executed -->
+    <PipelinePosition Optional="true" Relative="Inside" ExecutionOrder="50">Script</PipelinePosition>
+
+  </PipelinePlugin>
+</JitterbitPlugin>
